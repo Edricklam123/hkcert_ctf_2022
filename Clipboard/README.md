@@ -205,7 +205,7 @@ Comparing to the header we have
 
 - `ansicpg1252` means the document uses ANSI code page 1252, which stands for Western European
 - `deflang1033` means the default language is 1033 (English, U.S.)
-- The highlighted part are actually the image destination control keywords.
+- The part starting with `\pict` are actually the image destination control keywords.
     - `wmetafile8` means the source of the picture is a Windows metafile, `8` is the metafile type
     - `picw` and  `pich` is the width and height in pixel values
     - `picwgoal` and `pichgoal` is the width and height in twips (twentieth of an inch point, 1⁄20)
