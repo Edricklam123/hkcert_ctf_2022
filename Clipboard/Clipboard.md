@@ -1,10 +1,8 @@
-# HKCERT CTF 2022 Writeup: Clipboard
-
-# **Clipboard (200 points, 22 solves)**
+# HKCERT CTF 2022 Writeup: Clipboard (200 points, 22 solves)
 
 Category: **Forensic ★★★☆☆**
 
-## Challenge Description
+### Challenge Description
 
 > My friend has store the flag in clipboard. Please help me to find the flag out.
 > 
@@ -48,7 +46,7 @@ volatility.exe -f "Windows 7 x64.mem" imageinfo
 
 Running this usual starter command seems encountered some issues, it prints these warnings and got stuck.
 
-![Untitled](HKCERT%20CTF%202022%20Writeup%20Clipboard%20267bd038f47d40919129c69402838900/Untitled.png)
+![Untitled](images/Untitled.png)
 
 After some runtime, volatility finally gave us the suggested profiles:
 
@@ -77,7 +75,7 @@ volatility.exe -f "Windows 7 x64.mem" --profile=Win8SP0x64 pstree
 
 This returns:
 
-![Untitled](HKCERT%20CTF%202022%20Writeup%20Clipboard%20267bd038f47d40919129c69402838900/Untitled%201.png)
+![Untitled](images/Untitled%201.png)
 
 Hmm…. it seems there are some issues with volatility’s image profile suggestion, how about we tap into the information given by the problem and supply the correct one?
 
@@ -95,7 +93,7 @@ volatility.exe -f "Windows 7 x64.mem" --profile=Win7SP1x64_23418 pstree
 
 This works and returns the following:
 
-![Untitled](HKCERT%20CTF%202022%20Writeup%20Clipboard%20267bd038f47d40919129c69402838900/Untitled%202.png)
+![Untitled](images/Untitled%202.png)
 
 However, image profile `Win7SP1x64_24000` does not work, since volatility2 (vol2) is last maintained in 2016 while `Win7SP1x64_24000` is dated 2018-01-09. (Credit to dearest my teammate who has a hard life!)
 
@@ -109,7 +107,7 @@ volatility.exe -f "Windows 7 x64.mem" --profile=Win7SP1x64_23418 clipboard
 
 It took the program some time to return the following:
 
-![Untitled](HKCERT%20CTF%202022%20Writeup%20Clipboard%20267bd038f47d40919129c69402838900/Untitled%203.png)
+![Untitled](imagesUntitled%203.png)
 
 But where is the data? (Data呢_你?)
 
@@ -181,7 +179,7 @@ f401f40100000000f401f4010000000028000000f4010000f40100000100180000000000b0710b
 
 Then we rename the file extension to `.rtf` and open it, bingo! We found that flag, which is attached in an image (quite a funny image)
 
-![Untitled](HKCERT%20CTF%202022%20Writeup%20Clipboard%20267bd038f47d40919129c69402838900/flag.png)
+![Untitled](images/flag.png)
 
 `=> hkcert22{f0r3ns1c_1s_fun_t0_p14y_w1th}`
 
@@ -225,7 +223,7 @@ volatility.exe -f "Windows 7 x64.mem" --profile=Win7SP1x64_23418 pstree
 volatility.exe -f "Windows 7 x64.mem" --profile=Win7SP1x64_23418 procdump -p 2356 --dump-dir .
 ```
 
-After that I also tried different ways of dumping the memory of `wordpad.exe` to see if there is any luck, but turns out that I missed my luck at the very beginning.
+After that I also tried different ways, for example `filescan` and dumping the memory of `wordpad.exe` to see if there is any luck, but turns out that I missed my luck at the very beginning. I have attached the files in the (./data) folder, you may have a look at them.
 
 ## Reference
 
