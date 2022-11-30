@@ -107,7 +107,7 @@ volatility.exe -f "Windows 7 x64.mem" --profile=Win7SP1x64_23418 clipboard
 
 It took the program some time to return the following:
 
-![Untitled](imagesUntitled%203.png)
+![Untitled](images/Untitled%203.png)
 
 But where is the data? (Data呢_你?)
 
@@ -123,7 +123,7 @@ After some runtime, console returns a bunch of data for every clipboard item, th
 volatility.exe -f "Windows 7 x64.mem" --profile=Win7SP1x64_23418 clipboard -v > clipboard_output.txt
 ```
 
-**TODO: Add the link to the txt in GitHub**
+The exported txt: [clipboard_output.txt](data/clipboard_output.txt)
 
 ## Investigate the exported data
 
@@ -223,7 +223,7 @@ volatility.exe -f "Windows 7 x64.mem" --profile=Win7SP1x64_23418 pstree
 volatility.exe -f "Windows 7 x64.mem" --profile=Win7SP1x64_23418 procdump -p 2356 --dump-dir .
 ```
 
-After that I also tried different ways, for example `filescan` and dumping the memory of `wordpad.exe` to see if there is any luck, but turns out that I missed my luck at the very beginning. I have attached the files in the (./data) folder, you may have a look at them.
+After that I also tried different ways, for example `filescan` and dumping the memory of `wordpad.exe` to see if there is any luck, but turns out that I missed my luck at the very beginning. I have attached the files in the [./data](data) folder, you may have a look at them.
 
 ## Reference
 
