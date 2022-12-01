@@ -30,7 +30,7 @@ Installing volatility is a bit troublesome, there are [volatility 2](https://git
 
 More information could be found on volatility’s homepage: [Volatility Foundation](https://www.volatilityfoundation.org/) and their [GitHub](https://github.com/volatilityfoundation).
 
-Since my Kali has some issues, so I actually use the [standalone version portable version (Python 2.6)](https://www.volatilityfoundation.org/releases).
+Since my Kali has some issues, so I used the [standalone version portable version (Python 2.6)](https://www.volatilityfoundation.org/releases) to solve the challenge, the commands should be similar python version.
 
 ## Using Volatility to investigate the `.mem`
 
@@ -214,7 +214,7 @@ With these knowledge on RTF file headers, plus the data content are HEX and line
 
 ## The extra extra path
 
-At the beginning I did not realize the clipboard contains a file, instead, I thought it’s some random codes to confuse us together with the name of the challenge since the challenge name is usually not that direct.
+At the beginning I did not notice that the last item in the clipboard is a RTF file, instead, I thought it’s some random codes to confuse us together with the name of the challenge since the challenge name is usually not that direct.
 
 Therefore, I looked at the `pstree` and found that the `wordpad.exe` is suspicious, I used the command to export the `wordpad.exe` and try to open it, but this way does not work. 
 
